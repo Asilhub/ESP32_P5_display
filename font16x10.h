@@ -919,23 +919,24 @@ const uint16_t font16x10[][16] PROGMEM = {
     0b0000000000,
     0b0000000000
   },
-  // 'Е' - Klassik va proporsional variant
+  // 'Е' - 14 qator, 8px kenglik. Avval lotin 'E' dan nusxa olingan edi
+  // (13 qator, 7px), shu sababli qo'shni kirill harflaridan past va tor edi.
   {
+    0b0111111110,
+    0b0111111110,
+    0b0110000000,
+    0b0110000000,
+    0b0110000000,
+    0b0110000000,
+    0b0111111100, // O'rta chiziq biroz qisqaroq (chiroyli ko'rinishi uchun)
     0b0111111100,
-    0b0111111100,
-    0b0110000000,
-    0b0110000000,
-    0b0110000000,
-    0b0111111000, // O'rta chiziq biroz qisqaroq (chiroyli ko'rinishi uchun)
-    0b0111111000,
     0b0110000000,
     0b0110000000,
     0b0110000000,
     0b0110000000,
-    0b0111111100,
-    0b0111111100,
+    0b0111111110,
+    0b0111111110,
     0b0000000000, // Oxirgi qatorlar bo'sh (harflar orasidagi masofa uchun)
-    0b0000000000,
     0b0000000000
   },
  

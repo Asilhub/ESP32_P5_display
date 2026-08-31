@@ -269,4 +269,5 @@ p5_carwash/
 
 - **Proporsional:** har bir belgining chap va o'ng tomonidagi bo'sh ustunlar ish vaqtida kesib tashlanadi, shuning uchun `1` va `:` kabi belgilar kam joy egallaydi.
 - **Tarkibi:** `0-9`, `A-Z`, `: - . , $ % + / =`, hamda to'liq kirill alifbosi.
-- **Amaldagi balandlik:** lotin harflari va raqamlar 0–13 qatorlarni egallaydi (14 px). Faqat `Ң`, `Ц`, `Щ` harflari dumi bilan 15-qatorgacha tushadi.
+- **Amaldagi balandlik:** lotin bosh harflari 13 px (0–12 qatorlar), raqamlar va kirill harflari 14 px (0–13 qatorlar). `Ң` 15 px, `Ц` va `Щ` dumi bilan 16 px gacha tushadi.
+- **Tuzatilgan nuqson:** kirill `В` va `Е` harflari avval qo'shnilaridan 1 px past turardi. `В` uchun kod lotin `B` glifiga yo'naltirilgan edi (13 qator), `Е` esa lotin `E` dan nusxa olingan edi (13 qator, 7 px). Ikkalasi ham qolgan kirill harflariga moslab 14 qator / 8 px ga keltirildi.

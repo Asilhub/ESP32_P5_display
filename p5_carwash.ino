@@ -151,11 +151,11 @@ int getFontIndex(uint16_t code) {
   if (code >= 0x0430 && code <= 0x044F) code -= 32;
   if (code == 0x0451) code = 0x0401; // ё -> Ё
 
-  // Special visual correction: Use Latin B (index 11) for Cyrillic В to prevent it from looking like '8'
-  if (code == 0x0412) return 11;
-
   // Cyrillic Uppercase mapping (to match 81-character font16x10 array, skipping Ң, Ө, Ү)
-  if (code >= 0x0410 && code <= 0x0415) return code - 0x0410 + 45; // А..Е (Note: В is already handled above)
+  // Note: Cyrillic В uses its own glyph (index 47). The P4 version redirected it to
+  // the Latin B glyph (index 11), but that one is only 13 rows tall while every
+  // Cyrillic glyph is 14 - which made В sit one pixel short next to its neighbours.
+  if (code >= 0x0410 && code <= 0x0415) return code - 0x0410 + 45; // А..Е
   if (code == 0x0401) return 51; // Ё
   if (code >= 0x0416 && code <= 0x041D) return code - 0x0416 + 52; // Ж..Н
   // Index 60 is Ң (skipped)

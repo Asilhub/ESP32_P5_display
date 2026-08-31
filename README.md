@@ -27,7 +27,7 @@ ESP32 va HUB75 razyomi orasidagi ulanish:
 | **A** | 23 | Satr tanlash A |
 | **B** | 19 | Satr tanlash B |
 | **C** | 5 | Satr tanlash C |
-| **D** | 17 | Satr tanlash D |
+| **D / NC** | 17 | Satr tanlash D. Ko'p P5-1921-8S panellarda bu oyoqcha razyomda **`NC`** deb belgilangan — 1/8 scan panelda bu liniya ishlatilmaydi, shuning uchun ulanmasa ham panel normal ishlaydi |
 | **E** | — | **Ulanmaydi.** 1/8 scan panelda ishlatilmaydi (`CH_E = -1`) |
 | **LAT / STB** | 4 | Latch |
 | **OE** | 15 | Output Enable |

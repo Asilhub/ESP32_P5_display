@@ -48,48 +48,48 @@ Panel ESP32 dan emas, **alohida 5 V manbadan** oziqlanadi.
 
 ## 2. Dasturni yuklash
 
-### A) Tayyor firmware bilan (mijoz uchun eng oson yo'l)
+### A) Tayyor firmware bilan (4 ta .bin fayl)
 
-Kompilyatsiya qilish shart emas. [`release/`](release/) papkasidagi bitta fayl yetarli:
+Kompilyatsiya qilish shart emas. [`release/parts/`](release/parts/) papkasidagi 4 ta fayl orqali yuklanadi:
 
-```
-release/p5_carwash_v1.0.1_FULL.bin   ->  0x0 manziliga yoziladi
-```
+| Fayl | Manzil (Address) | Tavsif |
+| :--- | :--- | :--- |
+| `bootloader.bin` | `0x1000` | ESP32 bootloader |
+| `partitions.bin` | `0x8000` | Partition table |
+| `boot_app0.bin` | `0xe000` | OTA boot app info |
+| `firmware.bin` | `0x10000` | Asosiy dastur kodi |
 
-**Windows'da:**
+**1. Windows'da avtomatlashtirilgan skript bilan:**
 
-```
+```cmd
 cd release
 flash.bat COM3
 ```
 
-`esptool` o'rnatilmagan bo'lsa: `pip install esptool`
+*(Skript avtomatik tarzda 4 ta faylni kerakli manzillarga yozadi)*
 
-**Yoki Espressif Flash Download Tool (GUI) bilan:**
+**2. Espressif Flash Download Tool (GUI) orqali:**
 
-| Sozlama | Qiymat |
-| :--- | :--- |
-| Chip | ESP32 |
-| Fayl | `p5_carwash_v1.0.1_FULL.bin` |
-| Address | `0x0` |
-| SPI Speed | 80 MHz |
-| SPI Mode | DIO |
-| Flash size | 4 MB |
+| Fayl yo'li | Address | Belgilash |
+| :--- | :--- | :---: |
+| `bootloader.bin` | `0x1000` | ✅ |
+| `partitions.bin` | `0x8000` | ✅ |
+| `boot_app0.bin` | `0xe000` | ✅ |
+| `firmware.bin` | `0x10000` | ✅ |
 
-**Qo'lda esptool buyrug'i:**
+- **Chip:** ESP32
+- **WorkMode:** develop
+- **SPI Speed:** 80 MHz
+- **SPI Mode:** DIO
+- **Flash size:** 32Mbit (yoki 4MB)
 
+**3. Qo'lda esptool buyrug'i:**
+
+```bash
+esptool --chip esp32 -p COM3 -b 921600 write_flash 0x1000 parts/bootloader.bin 0x8000 parts/partitions.bin 0xe000 parts/boot_app0.bin 0x10000 parts/firmware.bin
 ```
-esptool --chip esp32 -p COM3 -b 921600 write_flash 0x0 p5_carwash_v1.0.1_FULL.bin
-```
 
-Alohida bo'laklar kerak bo'lsa, [`release/parts/`](release/parts/) papkasida:
-
-| Fayl | Manzil |
-| :--- | :--- |
-| `bootloader.bin` | `0x1000` |
-| `partitions.bin` | `0x8000` |
-| `boot_app0.bin` | `0xe000` |
-| `firmware.bin` | `0x10000` |
+*(Ixtiyoriy: 0x0 manziliga birdan yozish uchun bitta yagona `p5_carwash_v1.0.1_FULL.bin` fayli ham mavjud)*
 
 ### B) Manbadan kompilyatsiya qilish
 

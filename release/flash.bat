@@ -10,14 +10,18 @@ set PORT=%1
 if "%PORT%"=="" set PORT=COM3
 
 echo.
-echo  P5 Carwash Display v1.0.1
+echo  P5 Carwash Display v1.0.1 (4 ta bin fayl)
 echo  Port: %PORT%
 echo.
 
 where esptool >nul 2>&1
 if errorlevel 1 goto NOTOOL
 
-esptool --chip esp32 -p %PORT% -b 921600 write_flash 0x0 "%~dp0p5_carwash_v1.0.1_FULL.bin"
+if exist "%~dp0parts\firmware.bin" (
+    esptool --chip esp32 -p %PORT% -b 921600 write_flash 0x1000 "%~dp0parts\bootloader.bin" 0x8000 "%~dp0parts\partitions.bin" 0xe000 "%~dp0parts\boot_app0.bin" 0x10000 "%~dp0parts\firmware.bin"
+) else (
+    esptool --chip esp32 -p %PORT% -b 921600 write_flash 0x1000 "%~dp0bootloader.bin" 0x8000 "%~dp0partitions.bin" 0xe000 "%~dp0boot_app0.bin" 0x10000 "%~dp0firmware.bin"
+)
 if errorlevel 1 goto FAILED
 
 echo.
@@ -31,9 +35,10 @@ echo  XATO: esptool topilmadi.
 echo.
 echo  O'rnatish:  pip install esptool
 echo  Yoki Espressif Flash Download Tool dan foydalaning:
-echo    - Chip: ESP32
-echo    - Fayl: p5_carwash_v1.0.1_FULL.bin
-echo    - Manzil (address): 0x0
+echo    - 0x1000  : bootloader.bin
+echo    - 0x8000  : partitions.bin
+echo    - 0xe000  : boot_app0.bin
+echo    - 0x10000 : firmware.bin
 echo.
 pause
 exit /b 1

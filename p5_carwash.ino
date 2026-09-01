@@ -23,21 +23,21 @@
 #define PANELS_NUMBER   1
 #define PANEL_SCAN_TYPE FOUR_SCAN_32PX_HIGH
 
-// Pinout konfiguratsiyasi (P5 panelda ishlab turgan sozlama)
-#define RL1  25
-#define GL1  26
-#define BL1  27
-#define RL2  14
-#define GL2  12
-#define BL2  13
-#define CH_A 23
-#define CH_B 19
-#define CH_C  5
-#define CH_D 17
-#define CH_E -1     // 1/8 scan uchun kerak emas
-#define CLK  16
-#define LAT   4
-#define OE   15
+// Pinout konfiguratsiyasi (v1.0.1)
+#define RL1 18
+#define GL1 17
+#define BL1 16
+#define RL2 15
+#define GL2 19
+#define BL2 21
+#define CH_A 4
+#define CH_B 22
+#define CH_C 14
+#define CH_D 13
+#define CH_E 5
+#define CLK 27
+#define LAT 26
+#define OE  25
 
 MatrixPanel_I2S_DMA *dma_display = nullptr;
 

@@ -4,7 +4,7 @@ Avtomoyka shoxobchalari uchun LED tablo dasturi. ESP32 mikrokontrolleri HUB75 RG
 
 Ko'p tilli: lotin va kirill alifbolari, UTF-8 dekoder, proporsional 16x10 shrift.
 
-**Versiya:** 1.0.0  
+**Versiya:** 1.0.1  
 **Panel:** P5-1921-64\*32-8S-S2 (64x32, 1/8 scan, four-scan)  
 **Kontroller:** ESP32 (original, 2016)
 
@@ -18,20 +18,20 @@ ESP32 va HUB75 razyomi orasidagi ulanish:
 
 | HUB75 pin | ESP32 GPIO | Vazifasi |
 | :--- | :---: | :--- |
-| **R1** | 25 | Qizil, yuqori yarim |
-| **G1** | 26 | Yashil, yuqori yarim |
-| **B1** | 27 | Ko'k, yuqori yarim |
-| **R2** | 14 | Qizil, quyi yarim |
-| **G2** | 12 | Yashil, quyi yarim |
-| **B2** | 13 | Ko'k, quyi yarim |
-| **A** | 23 | Satr tanlash A |
-| **B** | 19 | Satr tanlash B |
-| **C** | 5 | Satr tanlash C |
-| **D / NC** | 17 | Satr tanlash D. Ko'p P5-1921-8S panellarda bu oyoqcha razyomda **`NC`** deb belgilangan — 1/8 scan panelda bu liniya ishlatilmaydi, shuning uchun ulanmasa ham panel normal ishlaydi |
-| **E** | — | **Ulanmaydi.** 1/8 scan panelda ishlatilmaydi (`CH_E = -1`) |
-| **LAT / STB** | 4 | Latch |
-| **OE** | 15 | Output Enable |
-| **CLK** | 16 | Taktlash |
+| **R1** | 18 | Qizil, yuqori yarim |
+| **G1** | 17 | Yashil, yuqori yarim |
+| **B1** | 16 | Ko'k, yuqori yarim |
+| **R2** | 15 | Qizil, quyi yarim |
+| **G2** | 19 | Yashil, quyi yarim |
+| **B2** | 21 | Ko'k, quyi yarim |
+| **A** | 4 | Satr tanlash A |
+| **B** | 22 | Satr tanlash B |
+| **C** | 14 | Satr tanlash C |
+| **D / NC** | 13 | Satr tanlash D |
+| **E** | 5 | Satr tanlash E (1/8 scan panelda ulanmasa ham bo'ladi) |
+| **LAT / STB** | 26 | Latch |
+| **OE** | 25 | Output Enable |
+| **CLK** | 27 | Taktlash |
 | **GND** | GND | Umumiy yer — kamida 2 ta GND simini ulang |
 
 Pinlarni o'zgartirish kerak bo'lsa: [`p5_carwash.ino`](p5_carwash.ino) faylining boshidagi `#define` bloki.
@@ -53,7 +53,7 @@ Panel ESP32 dan emas, **alohida 5 V manbadan** oziqlanadi.
 Kompilyatsiya qilish shart emas. [`release/`](release/) papkasidagi bitta fayl yetarli:
 
 ```
-release/p5_carwash_v1.0.0_FULL.bin   ->  0x0 manziliga yoziladi
+release/p5_carwash_v1.0.1_FULL.bin   ->  0x0 manziliga yoziladi
 ```
 
 **Windows'da:**
@@ -70,7 +70,7 @@ flash.bat COM3
 | Sozlama | Qiymat |
 | :--- | :--- |
 | Chip | ESP32 |
-| Fayl | `p5_carwash_v1.0.0_FULL.bin` |
+| Fayl | `p5_carwash_v1.0.1_FULL.bin` |
 | Address | `0x0` |
 | SPI Speed | 80 MHz |
 | SPI Mode | DIO |
@@ -79,7 +79,7 @@ flash.bat COM3
 **Qo'lda esptool buyrug'i:**
 
 ```
-esptool --chip esp32 -p COM3 -b 921600 write_flash 0x0 p5_carwash_v1.0.0_FULL.bin
+esptool --chip esp32 -p COM3 -b 921600 write_flash 0x0 p5_carwash_v1.0.1_FULL.bin
 ```
 
 Alohida bo'laklar kerak bo'lsa, [`release/parts/`](release/parts/) papkasida:
@@ -254,7 +254,7 @@ p5_carwash/
 ├── font16x10.h                       Proporsional shrift, 81 ta belgi
 ├── README.md                         Shu hujjat
 └── release/
-    ├── p5_carwash_v1.0.0_FULL.bin    Tayyor firmware (0x0 ga yoziladi)
+    ├── p5_carwash_v1.0.1_FULL.bin    Tayyor firmware (0x0 ga yoziladi)
     ├── flash.bat                     Windows uchun flash skripti
     └── parts/
         ├── bootloader.bin            0x1000
